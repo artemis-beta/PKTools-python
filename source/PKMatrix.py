@@ -73,7 +73,7 @@ class PKMatrix:
 		for i in range(0,len(self.elements)):
 			new_list.append([])
 			for j in range(0,len(self.elements[0])):
-				new_list[-1].append(self.elements[0][0])
+				new_list[-1].append(0*self.elements[0][0])
 				for l in range(0,len(self.elements)):
 					new_list[-1][-1] = new_list[-1][-1] + self.elements[i][l]*param.elements[l][j]
 
@@ -100,10 +100,10 @@ class PKMatrix:
                         return temp
 
 	def Trace(self):
-		x = PKVar(0,0)
+		x = self.elements[0][0]
 		if(len(self.elements[0]) is not len(self.elements)):
 			print "ERROR: Trace can only be calculated for a square matrix!\n"
-			return PKVar(0,0)
+			return None
 
 		for i in range(0,len(self.elements)):
 			x = x + self.elements[i][i]
