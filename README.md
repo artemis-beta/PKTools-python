@@ -23,7 +23,7 @@ which can be found in the `examples` folder.
 ## PKMatrix
 A class that allows the construction of up to a 10x10 matrix using `PKVar` variables. Construction is through either manually creating a `columns[rows[]]`, list of lists, the length then being the number of columns, or by creating an empty instance:
 ```
-PKMatrix matrix;
+matrix = PKMatrix()
 matrix.addRow(PKVar(1,0),PKVar(0,0));
 matrix.addRow(PKVar(0,0),PKVar(1,0));
 ```
