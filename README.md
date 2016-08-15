@@ -24,7 +24,7 @@ which can be found in the `examples` folder.
 A class that allows the construction of up to a 10x10 matrix using `PKVar` or `PKComplexVar` variables. Construction is through either manually creating a `columns[rows[]]`, list of lists, the length then being the number of columns, or by creating an empty instance:
 ```
 matrix = PKMatrix()
-matrix.addRow(PKComplexVar(1,0),PKComplexVar(0,0))
 matrix.addRow(PKComplexVar(0,0),PKComplexVar(1,0))
+matrix.addRow(PKComplexVar(1,0),PKComplexVar(0,0))
 ```
 this example being one of the Pauli matrices. 
