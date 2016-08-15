@@ -1,4 +1,4 @@
-# 2016 JCNK Hackathon C++ Club: PKTools Library
+# 2016 JCNK Hackathon Python Club: PKTools Library
 Just a place for us to bolt together some code as part of training in our spare time.
 ## PKTriangle
 A simple class which can be given either Side-Side-Angle (`"SSA"`) or Angle-Angle-Side (`"AAS"`) value combinations, the other values are then calculated to give a triangle:
