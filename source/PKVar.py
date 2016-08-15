@@ -37,11 +37,20 @@ class PKVar:
                 return temp
 
 	def __mul__(self,param):
+		
 		temp = PKVar(0,0)
+		if isinstance(param,int) or isinstance(param,float):
+			temp.value = self.value*param
+			temp.error = self.error*param	
 	        temp.value = self.value * param.value
         	temp.error = pow(pow(param.value*self.error,2)+pow(self.value*param.error,2),0.5);
 
 		return temp
+	def __rmul__(self,param):
+		return self.__mul__(param)
+
+	def __rmul__(self,param):
+		return __mul__(param)
 
 	def __div__(self,param):
 		

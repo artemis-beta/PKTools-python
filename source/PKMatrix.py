@@ -56,7 +56,16 @@ class PKMatrix:
 		return temp
 
 	def __mul__(self,param):
-	
+
+		if isinstance(param,float) or isinstance(param,int):
+			new_list = []
+			for i in range(0,len(self.elements)):
+                                new_list.append([])
+				for l in range(0,len(self.elements[0])):
+					new_list[-1].append(self.elements[i][l]*param)
+			temp = PKMatrix(new_list)
+			return temp
+		
 		if(len(param.elements) is not len(self.elements[0])):
 			print "ERROR: cannot multiply matrices with set dimensions\n"
 			return PKMatrix()
@@ -71,6 +80,15 @@ class PKMatrix:
 
 		temp = PKMatrix(new_list)
 		return temp
+	def __rmul__(self,param):
+		if isinstance(param,float) or isinstance(param,int):
+                        new_list = []
+                        for i in range(0,len(self.elements)):
+                                new_list.append([])
+                                for l in range(0,len(self.elements[0])):
+                                        new_list[-1].append(self.elements[i][l]*param)
+                        temp = PKMatrix(new_list)
+                        return temp
 
 	def Trace(self):
 		x = PKVar(0,0)
