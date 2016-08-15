@@ -67,8 +67,10 @@ class PKComplexVar:
 	def __mul__(self,param):
 		temp = PKComplexVar(0,0)
 		if isinstance(param,int) or  isinstance(param,float):		
-			temp.real = self.real*param
-			temp.imaginary = self.imaginary*param
+			if self.real is not 0:
+				temp.real = self.real*param
+			if self.imaginary is not 0:
+				temp.imaginary = self.imaginary*param
 			return temp
 		temp.real = (self.real*param.real)-(self.imaginary*param.imaginary)
 		temp.imaginary = (self.real*param.imaginary + self.imaginary*param.real)
@@ -78,6 +80,12 @@ class PKComplexVar:
 		return self.__mul__(param)
 	def __div__(self,param):
 		temp = PKComplexVar(0,0)
+		if isinstance(param,int) or  isinstance(param,float):		
+			if self.real is not 0:	
+				temp.real = self.real/param
+			if self.imaginary is not 0:	
+				temp.imaginary = self.imaginary/param
+			return temp
 		modulus = self.modulus/param.modulus
 		arg_temp = self.arg - param.arg
 		temp.real = modulus/pow(1+atan(arg_temp),0.5)

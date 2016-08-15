@@ -89,6 +89,16 @@ class PKMatrix:
                                         new_list[-1].append(self.elements[i][l]*param)
                         temp = PKMatrix(new_list)
                         return temp
+	def __div__(self,param):
+		
+		if isinstance(param,float) or isinstance(param,int):
+                        new_list = []
+                        for i in range(0,len(self.elements)):
+                                new_list.append([])
+                                for l in range(0,len(self.elements[0])):
+                                        new_list[-1].append(self.elements[i][l]/param)
+                        temp = PKMatrix(new_list)
+                        return temp
 
 	def Trace(self):
 		x = PKVar(0,0)
