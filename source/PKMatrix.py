@@ -1,4 +1,3 @@
-from PKVar import *
 
 class PKMatrix:
 	def __init__(self,rows_columns=None):
@@ -74,7 +73,7 @@ class PKMatrix:
 		for i in range(0,len(self.elements)):
 			new_list.append([])
 			for j in range(0,len(self.elements[0])):
-				new_list[-1].append(PKVar(0,0))
+				new_list[-1].append(self.elements[0][0])
 				for l in range(0,len(self.elements)):
 					new_list[-1][-1] = new_list[-1][-1] + self.elements[i][l]*param.elements[l][j]
 
