@@ -21,10 +21,10 @@ LorentzVectors.py
 which can be found in the `examples` folder.
 
 ## PKMatrix
-A class that allows the construction of up to a 10x10 matrix using `PKVar` variables. Construction is through either manually creating a `columns[rows[]]`, list of lists, the length then being the number of columns, or by creating an empty instance:
+A class that allows the construction of up to a 10x10 matrix using `PKVar` or `PKComplexVar` variables. Construction is through either manually creating a `columns[rows[]]`, list of lists, the length then being the number of columns, or by creating an empty instance:
 ```
-PKMatrix matrix;
-matrix.addRow(PKVar(1,0),PKVar(0,0));
-matrix.addRow(PKVar(0,0),PKVar(1,0));
+matrix = PKMatrix()
+matrix.addRow(PKComplexVar(0,0),PKComplexVar(1,0))
+matrix.addRow(PKComplexVar(1,0),PKComplexVar(0,0))
 ```
-this example being one of the Pauli matrices.
+this example being one of the Pauli matrices. 
