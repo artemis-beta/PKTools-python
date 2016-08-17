@@ -32,7 +32,7 @@ class PKComplexVar:
 				outstring += "%fi" % self.imaginary
 
 		elif option is 1:
-			if(self.imaginary is 0):
+			if self.imaginary is 0:
 				outstring = "1"
 			else:
 				outstring += "%f*exp(" % fself.modulus 
@@ -40,7 +40,7 @@ class PKComplexVar:
 					outstring += "-"
 				outstring += self.arg + "i)"
 		
-		elif option is 3:
+		elif option is 2:
 			if self.imaginary is 0:
 				outstring = "1"
 			else:
