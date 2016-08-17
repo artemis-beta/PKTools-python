@@ -24,7 +24,7 @@ class PKComplexVar:
 	def returnString(self,option=0):
 		outstring = ""
 		if option is 0:
-			if self.real is not 0 or self.imaginary is 0:
+			if self.imaginary is 0:
 				outstring += "%f" % self.real
 			if self.imaginary is not 0:
 				if(self.imaginary > 0):
@@ -32,7 +32,7 @@ class PKComplexVar:
 				outstring += "%fi" % self.imaginary
 
 		elif option is 1:
-			if(self.imaginary is 0):
+			if self.imaginary is 0:		
 				outstring = "1"
 			else:
 				outstring += "%f*exp(" % fself.modulus 
@@ -40,7 +40,7 @@ class PKComplexVar:
 					outstring += "-"
 				outstring += self.arg + "i)"
 		
-		elif option is 3:
+		elif option is 2:
 			if self.imaginary is 0:
 				outstring = "1"
 			else:
@@ -49,6 +49,7 @@ class PKComplexVar:
 					outstring += "+"
 				outstring += "%fi*sin(%f)" % (self.imaginary,self.arg)
 		return outstring
+		
 	def Print(self,option=0):
 		print self.returnString(option)
 	
