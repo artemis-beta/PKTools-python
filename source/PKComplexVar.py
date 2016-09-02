@@ -77,6 +77,11 @@ class PKComplexVar:
 		temp.imaginary = (self.real*param.imaginary + self.imaginary*param.real)
 		return temp
 
+	def Conjugate(self):
+		temp = PKComplexVar(0,0)
+		temp.real = self.real
+		temp.imaginary = -1*self.imaginary
+		return temp
 	def __rmul__(self,param):
 		return self.__mul__(param)
 	def __div__(self,param):

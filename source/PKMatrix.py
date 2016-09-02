@@ -56,6 +56,23 @@ class PKMatrix:
 
 		return temp
 
+	def Conjugate(self):
+		try:
+			new_list = []
+			for i in range(0,len(self.elements)):
+			       new_list.append([])
+			       for l in range(0,len(self.elements[0])):
+				      new_list[-1].append(self.elements[i][l].Conjugate())
+			temp = PKMatrix(new_list)
+		except AttributeError:
+			print "ERROR: Elements of PKMatrix not of type PKComplexVar"
+			return PKMatrix()
+		return temp
+
+	def Dagger(self):
+		temp = self.Conjugate()	
+		temp = temp.Transpose()
+		return temp
 	def __mul__(self,param):
 
 		if isinstance(param,float) or isinstance(param,int):
