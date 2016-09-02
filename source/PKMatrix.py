@@ -131,3 +131,25 @@ class PKMatrix:
 	def Print(self):
 		print self.__str__()	
 
+	def __iadd__(self,param):
+		temp = self + param
+		return temp
+	
+	def __isub__(self,param):
+		temp = self - param
+		return temp
+	def __imul__(self,param):
+		temp = self*param
+		return temp
+	
+	def __pow__(self,index):
+		temp = self
+		for i in range(0,index):
+			temp *= self
+		return temp
+
+
+def Commutator(a,b):
+	return a*b - b*a
+def Anticommutator(a,b):
+	return a*b + b*a
