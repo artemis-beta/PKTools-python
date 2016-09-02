@@ -11,11 +11,13 @@ class PKMatrix:
 		for i in range(0,len(self.elements)-1):
 			self.elements[i].append(column[i])
 	def __str__(self):
+		outputstring = ""
 		for i in range(0,len(self.elements)):
-			print "(",
+			outputstring += "("
 			for j in range(0,len(self.elements[0])):
-				print self.elements[i][j].returnString(),
-			print ")"	
+				outputstring += "%s " % self.elements[i][j].__str__()
+			outputstring +=  ")\n"	
+		return outputstring
 	def __add__(self,param):
 		if(len(param.elements) is not len(self.elements) and len(param.elements[0]) is not len(self.elements[0])):
 			print "ERROR: Cannot add matrices of varying dimensions\n"
@@ -110,4 +112,5 @@ class PKMatrix:
 		return x
 
 	def Print(self):
-		return self.__str__()	
+		print self.__str__()	
+

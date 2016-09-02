@@ -49,9 +49,10 @@ class PKComplexVar:
 					outstring += "+"
 				outstring += "%fi*sin(%f)" % (self.imaginary,self.arg)
 		return outstring
-	def Print(self,option=0):
-		print self.returnString(option)
-	
+	def __str__(self):
+		return self.returnString(0)
+	def Print(self):
+		print self.__str__()
 	def __add__(self,param):
 		temp = PKComplexVar(0,0)
 		temp.real = self.real + param.real
