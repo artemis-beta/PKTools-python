@@ -1,3 +1,5 @@
+import PKPlot as PKP
+
 class PKLeaf:
     def __init__(self, val):
         self._value = val
@@ -35,14 +37,18 @@ class PKEvent:
          
     def __str__(self):
         out_str = '''
-        ------------------------
-        PKTree_{}/PKEvent_{}
-        ------------------------
+    ======================================
+      PKTree_{}/PKEvent_{}
+    ======================================
         '''.format(self._parenttree.getName(), self._id)
 
         for branch in self._parenttree._branches:
-            out_str += '        {}: {}\n'.format(self._parenttree._branches[branch].getName(), getattr(self, self._parenttree._branches[branch].getName()))
-        out_str += '        ------------------------\n'
+            out_str += '''
+      {}:\t{}
+            '''.format(self._parenttree._branches[branch].getName(), getattr(self, self._parenttree._branches[branch].getName()))
+        out_str += '''
+    --------------------------------------
+        '''
         return out_str
 
 class PKTree:
@@ -73,13 +79,21 @@ class PKTree:
 
     def __str__(self):
         out_str = '''
-        **************************************
-              PKTREE: {}
-              ENTRIES: {}
-        **************************************
+    **************************************
+        PKTREE:   {}
+        ENTRIES:  {}
+    **************************************
         '''.format(self.getName(), self.getN())
 
         for branch in self._branches:
-            out_str += branch.__str__()
-            out_str += '--------------------------------------\n'
+            out_str += '''
+       {}
+            '''.format(branch.__str__())
+            out_str += '''
+    --------------------------------------
+            '''
         return out_str
+
+    def Draw(self, branch_name):
+        hist = PKP.PKHist(self.getBranchData(branch_name))
+        hist.Draw()

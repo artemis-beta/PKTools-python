@@ -6,10 +6,10 @@ class PKVar:
 		self.value = val
 		self.error = error
 	
-	def GetVal(self):
+	def getVal(self):
 		return self.value
 	
-	def GetError(self):
+	def getError(self):
 		return self.error
 
 	def Power(self,x):
@@ -26,12 +26,22 @@ class PKVar:
 	
 	def __add__(self,param):
 		temp = PKVar(0,0)
+                try:
+                    pow(self.error, 2) < 1E308 == True
+                    pow(param.error, 2) < 1E308 == True
+
+                except:
+                    "ERROR: Uncertainty/Value exceeds limit of 'double' type."
+                    raise OverflowError
+
 		temp.value = self.value + param.value
 		temp.error = pow(pow(self.error,2)+pow(param.error,2),0.5)
 		return temp
 	
 	def __sub__(self,param):
 		temp = PKVar(0,0)
+                assert pow(self.error, 2) < 1E308, "ERROR: Uncertainty value exceeds limit of 'double' type."
+                assert pow(param.error, 2) < 1E308, "ERROR: Uncertainty value exceeds limit of 'double' type."
                 temp.value = self.value - param.value
                 temp.error = pow(pow(self.error,2)+pow(param.error,2),0.5)
                 return temp
@@ -44,6 +54,8 @@ class PKVar:
 			temp.error = self.error*param	
 	        	return temp
 		temp.value = self.value * param.value
+                assert pow(self.error, 2) < 1E308, "ERROR: Uncertainty value exceeds limit of 'double' type."
+                assert pow(param.error, 2) < 1E308, "ERROR: Uncertainty value exceeds limit of 'double' type."
         	temp.error = pow(pow(param.value*self.error,2)+pow(self.value*param.error,2),0.5);
 
 		return temp
@@ -59,6 +71,8 @@ class PKVar:
 			temp.error = self.error/param
 			return temp	
 		temp.value = self.value / param.value
+                assert pow(self.error, 2) < 1E308, "ERROR: Uncertainty value exceeds limit of 'double' type."
+                assert pow(param.error, 2) < 1E308, "ERROR: Uncertainty value exceeds limit of 'double' type."
 		temp.error = pow(pow(self.error/param.value,2)+pow(self.value*param.error,2)*pow(param.value,-4),0.5)
 		return temp
 	

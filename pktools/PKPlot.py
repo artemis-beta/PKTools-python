@@ -20,7 +20,10 @@ class PKHist:
         self._stacked = stacked
         self._hold = hold
         self._data = data
-        
+        self._xlabel = "x"
+        self._ylabel = "y"
+        self._title = ""
+
         self._histplot = None
 
         self._gen_hist()
@@ -44,6 +47,25 @@ class PKHist:
                                    self._hold        ,
                                    self._data
                                    )
+        plt.xlabel(self._xlabel)
+        plt.ylabel(self._ylabel)
+        plt.title(self._title)
+
+    def setXLabel(self, label):
+        self._xlabel = label
+        plt.clf()
+        self._gen_hist()
+
+    def setYLabel(self, label):
+        self._ylabel = label
+        plt.clf()
+        self._gen_hist()
+
+    def setTitle(self, label):
+        self._title = r'{}'.format(label)
+        plt.clf()
+        self._gen_hist()
+
     def getName(self):
         return self._name
 
