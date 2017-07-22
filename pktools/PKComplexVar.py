@@ -52,7 +52,7 @@ class PKComplexVar:
 	def __str__(self):
 		return self.returnString(0)
 	def Print(self):
-		print self.__str__()
+		print(self.__str__())
 	def __add__(self,param):
 		temp = PKComplexVar(0,0)
 		temp.real = self.real + param.real
@@ -73,6 +73,8 @@ class PKComplexVar:
 			if self.imaginary is not 0:
 				temp.imaginary = self.imaginary*param
 			return temp
+		elif not isinstance(param, PKComplexVar):
+			return param*self
 		temp.real = (self.real*param.real)-(self.imaginary*param.imaginary)
 		temp.imaginary = (self.real*param.imaginary + self.imaginary*param.real)
 		return temp

@@ -1,4 +1,4 @@
-from PKVar import *
+from pktools.PKVar import PKVar
 
 class PKLorentzVector:
 
@@ -26,4 +26,4 @@ class PKLorentzVector:
 		return temp
 
 	def Print(self):
-		print "(", self.X[0].returnString()+","+self.X[1].returnString()+","+self.X[2].returnString()+","+self.X[3].returnString()+")"	
+		print("({}, {}, {}, {})".format(self.X[0].returnString(), self.X[1].returnString(), self.X[2].returnString(), self.X[3].returnString()))
