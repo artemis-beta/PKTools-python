@@ -10,8 +10,8 @@ class Resistor:
         self.R = resistance*nu.ohm
         self.name = name
         self.type = "Resistor"
-    self.symbol = "--===--"
-    self.current = 0
+        self.symbol = "--===--"
+        self.current = 0
 
     def setName(self, name):
         self.name = name
@@ -28,7 +28,7 @@ class Resistor:
 
 class Bulb(Resistor):
     def __init__(self, resistance):
-        self.R = resistance*nu.ohms
+        self.R = resistance*nu.ohm
         self.type = "Bulb"
         self.symbol = "--({})--".format(resistance)
 
@@ -46,6 +46,7 @@ class Capacitor:
 
 class Switch:
     def __init__(self):
+        self.R = 0*nu.ohm
         self.state = True
         self.symbol = "--o__o--"
         self.type = "Switch"
@@ -89,13 +90,14 @@ class PKCircuit:
            self.powerType = "AC"
 
         self.powerSource = power_source
-        self.components = {'0' : self.powerSource}
+        self.components = {'0' : power_source}
         self.numComponents = 0
         self.R = 0*nu.ohm
+
     def addInSeries(self, other):
         if other.R != 0*nu.ohm:
             other.current = (self.powerSource.V)/other.R
-            return self.R + other.R
+        return self.R + other.R
 
     def addInParallel(self, other):
         combinedR = 0 
@@ -137,3 +139,10 @@ class PKCircuit:
             outstring += self.components[element].symbol
         outstring += "o"
         print(outstring)
+
+if __name__ in "__main__":
+   circ = PKCircuit(Battery(12))
+   circ.addComponentInSeries(Bulb(0.3))
+   circ.addComponentInSeries(Resistor(0.3))
+   circ.addComponentInSeries(Switch())
+   circ.printCircuit()

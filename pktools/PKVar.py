@@ -63,7 +63,7 @@ class PKVar:
         temp.error = pow(pow(self.error/param.value,2)+pow(self.value*param.error,2)*pow(param.value,-4),0.5)
         return temp
     
-    def returnString(self):
+    def __str__(self):
         return "%3f +/- %3f" % (self.value,self.error)
     def Print(self):        
         print("%3f +/- %3f" % (self.value,self.error))
