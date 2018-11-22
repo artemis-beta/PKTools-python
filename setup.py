@@ -9,5 +9,7 @@ setup( name             =       'pktools'                                       
        license          =       'MIT'                                            ,
        packages         =       ['pktools']                                      ,
        zip_safe         =       False                                            ,
-       install_requires =       ['pint', 'numpy', 'matplotlib']
-     )
+       install_requires =       ['pint', 'numpy', 'matplotlib', 'pytest']        ,
+       setup_requires   =       ['pytest-runner']                                ,
+
+       )
