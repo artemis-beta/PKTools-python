@@ -62,6 +62,7 @@ class PKVar:
         temp.error = pow(pow(param.value*self.error,2)+pow(self.value*param.error,2),0.5);
 
         return temp
+
     def __rmul__(self,param):
         return self.__mul__(param)
 

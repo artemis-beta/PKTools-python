@@ -1,7 +1,4 @@
-import sys
-sys.path.insert(0, '../source/')
-
-from PKMatrix import *
+from pktools import PKMatrix
 
 a = PKMatrix()
 

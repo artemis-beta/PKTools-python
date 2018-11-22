@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup( name             =       'pktools'                                        ,
-       version          =       'v2.0.1'                                         ,
+       version          =       'v2.0.2'                                         ,
        description      =       'Physics Kit Module'                             ,
        url              =       'https://github.com/artemis-beta/PKTools-python' ,
        author           =       'Kristian Zarebski'                              ,
@@ -9,6 +9,5 @@ setup( name             =       'pktools'                                       
        license          =       'MIT'                                            ,
        packages         =       ['pktools']                                      ,
        zip_safe         =       False                                            ,
-       install_requires =       []
+       install_requires =       ['pint', 'numpy', 'matplotlib']
      )
-       

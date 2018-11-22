@@ -1,7 +1,4 @@
-import sys
-sys.path.insert(0, '../source/')
-
-from PKVar import *
+from pktools import PKVar
 
 x = PKVar(100.,10.)
 y = PKVar(56.,0.34)

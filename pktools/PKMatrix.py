@@ -78,7 +78,7 @@ class PKMatrix:
         return temp
     def __mul__(self,param):
 
-        if isinstance(param,float) or isinstance(param,int):
+        if isinstance(param,float) or isinstance(param,int) or isinstance(param, PKComplexVar):
             new_list = []
             for i in range(0,len(self.elements)):
                 new_list.append([])
