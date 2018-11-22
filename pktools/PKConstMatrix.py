@@ -10,6 +10,10 @@ def Pauli(label=0):
     temp = PKMatrix([])
     if label is 0:
         _logger.error("Invalid option for 'Pauli', state 1,2,3 for x,y,z")
+=======
+from pktools.PKMatrix import PKMatrix
+from pktools.PKComplexVar import PKComplexVar
+
     elif label is 1:
         temp = PKMatrix([[PKComplexVar(1,0),PKComplexVar(0,0)],[PKComplexVar(0,0),PKComplexVar(1,0)]])
     elif label is 2:
@@ -65,23 +69,65 @@ class Spinor:
     		                   [PKComplexVar(lorentz_vec.X[1].value/(lorentz_vec.X[0].value+mass),lorentz_vec.X[2].value/(lorentz_vec.X[0].value+mass))]])
 
 
-	    self._type = None
-		
-	    if type_ == 'v1':
-		self._type = self._v_up
-		self.elements = self._type.elements
+        self._type = None
+        
+        if type_ == 'v1':
+            self._type = self._v_up
+            self.elements = self._type.elements
 
-	def __rmul__(self, other):
-		return other*self._type
+    def __rmul__(self, other):
+        return other*self._type
 
-	def __str__(self):
-		return self._type.__str__()
+    def __str__(self):
+        return self._type.__str__()
 
-	def Print(self):
-		print(self.__str__())
 
-	def Transpose(self):
-		return self._type.Transpose()
+    def Transpose(self):
+        return self._type.Transpose()
+
+#### GELLMAN MATRICES ####
+
+def GellMan(label=1):
+    temp = PKMatrix([])
+    _logger = logging.getLogger("Gellman")
+    if label not in [i for i in range(1,9)]:
+        _logger.error("Invalid option for 'Gell-Mann', number must be 1, 2, 3, 4, 5, 6, 7, or 8")
+        exit(1)
+    elif label is 1:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
+                        [PKComplexVar(1,0), PKComplexVar(0,0),  PKComplexVar(0,0)],
+                        [PKComplexVar(0,0), PKComplexVar(0,0),  PKComplexVar(0,0)]])
+    elif label is 2:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,-1), PKComplexVar(0,0)],
+                        [PKComplexVar(0,1), PKComplexVar(0,0), PKComplexVar(0,0)],
+                        [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)]])
+    elif label is 3:
+        temp = PKMatrix([[PKComplexVar(1,0), PKComplexVar(0,0),  PKComplexVar(0,0)],
+                        [PKComplexVar(0,0), PKComplexVar(-1,0),  PKComplexVar(0,0)],
+                        [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)]])
+    elif label is 4:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0)],
+                        [PKComplexVar(0,0), PKComplexVar(0,0),  PKComplexVar(0,0)],
+                        [PKComplexVar(1,0), PKComplexVar(0,0),  PKComplexVar(0,0)]])
+    elif label is 5:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,-1)],
+                        [PKComplexVar(0,0), PKComplexVar(0,0),  PKComplexVar(0,0)],
+                        [PKComplexVar(1,0), PKComplexVar(0,0),  PKComplexVar(0,0)]])
+    elif label is 6:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0),  PKComplexVar(0,0)],
+                        [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0)],
+                        [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)]])
+    elif label is 7:
+        temp = PKMatrix([[PKComplexVar(0,0),  PKComplexVar(0,0), PKComplexVar(0,0)],
+                        [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,-1)], 
+                        [PKComplexVar(0,0), PKComplexVar(0,1), PKComplexVar(0,0)]])
+    elif label is 8:
+        temp = PKComplexVar(pow(3, -0.5), 0)*PKMatrix([[PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+                        [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
+                        [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-2,0)]])
+
+    return temp
+
 
 ## DEFINE DIRAC EQUATION MATRICES
 def alpha(int_):
@@ -93,11 +139,11 @@ def alpha(int_):
                 exit(1)
 
 def beta():
-	return Dirac(0)
+    return Dirac(0)
 
 def g():
-	temp = PKMatrix([[PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+    temp = PKMatrix([[PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
                          [PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
                          [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0)],
                          [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)]])
-	return temp		
+    return temp        

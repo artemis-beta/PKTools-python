@@ -8,6 +8,9 @@ class PKMatrix:
             rows_columns = []
         self.elements = rows_columns
         self.outstring = ""
+        if rows_columns and isinstance(rows_columns[0], PKVar):
+           print("Using 'PKVector' subtype")
+           self.elements = [self.elements]
     def addRow(self,row):
         self.elements.append(row)
     def addColumn(self,column):
@@ -49,7 +52,6 @@ class PKMatrix:
         return temp
 
     def Transpose(self):
-            
         new_list = []
         for i in range(0,len(self.elements[0])):
             new_list.append([])
@@ -77,7 +79,6 @@ class PKMatrix:
         temp = temp.Transpose()
         return temp
     def __mul__(self,param):
-
         if isinstance(param,float) or isinstance(param,int) or isinstance(param, PKComplexVar):
             new_list = []
             for i in range(0,len(self.elements)):
@@ -112,14 +113,14 @@ class PKMatrix:
                         return temp
     def __div__(self,param):
         
-        if isinstance(param,float) or isinstance(param,int):
-                        new_list = []
-                        for i in range(0,len(self.elements)):
-                                new_list.append([])
-                                for l in range(0,len(self.elements[0])):
-                                        new_list[-1].append(self.elements[i][l]/param)
-                        temp = PKMatrix(new_list)
-                        return temp
+       assert isinstance(param,float) or isinstance(param,int) or isinstance(param, PKVar), "ERROR: Cannot Perform Division on PKMatrix"
+       new_list = []
+       for i in range(0,len(self.elements)):
+               new_list.append([])
+               for l in range(0,len(self.elements[0])):
+                       new_list[-1].append(self.elements[i][l]/param)
+       temp = PKMatrix(new_list)
+       return temp
 
     def Trace(self):
         x = self.elements[0][0]
