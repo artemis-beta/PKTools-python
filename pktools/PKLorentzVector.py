@@ -4,7 +4,7 @@ class PKLorentzVector:
 
 	def __init__(self,x0=PKVar(0,0),x1=PKVar(0,0),x2=PKVar(0,0),x3=PKVar(0,0)):
 		self.X = [x0,x1,x2,x3]
-		self.magn_ = (x0*x0-x1*x1-x2*x2-x3*x3).Sqrt()
+		self.magn_ = pow(x0*x0-x1*x1-x2*x2-x3*x3, 0.5)
 	
 	@classmethod
 	def fromDoubles(cls,x0,x1,x2,x3,x0err=0,x1err=0,x2err=0,x3err=0):
@@ -26,4 +26,4 @@ class PKLorentzVector:
 		return temp
 
 	def Print(self):
-		print("({}, {}, {}, {})".format(self.X[0].returnString(), self.X[1].returnString(), self.X[2].returnString(), self.X[3].returnString()))
+		print("({}, {}, {}, {})".format(self.X[0], self.X[1], self.X[2], self.X[3]))

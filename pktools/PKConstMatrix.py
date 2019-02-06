@@ -10,10 +10,6 @@ def Pauli(label=0):
     temp = PKMatrix([])
     if label is 0:
         _logger.error("Invalid option for 'Pauli', state 1,2,3 for x,y,z")
-=======
-from pktools.PKMatrix import PKMatrix
-from pktools.PKComplexVar import PKComplexVar
-
     elif label is 1:
         temp = PKMatrix([[PKComplexVar(1,0),PKComplexVar(0,0)],[PKComplexVar(0,0),PKComplexVar(1,0)]])
     elif label is 2:
@@ -24,49 +20,49 @@ from pktools.PKComplexVar import PKComplexVar
 
 #####DIRAC########
 def Dirac(label=-1):
-	temp = PKMatrix([])
-        _logger = logging.getLogger("Dirac")
-	if label not in [0, 1, 2, 3, 4, 5]:
-		_logger.error("Invalid option for 'Dirac', state 0,1,2,3,4,5")
-                exit(1)
-	elif label is 0:
-		temp = PKMatrix([[PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-				 [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-				 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0)], 
-				 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)]]) 
-	elif label is 1:
-		temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0)],
-				 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
-				 [PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-				 [PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)]]) 
-	elif label is 2:
-		temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)],
-				 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)], 
-				 [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-				 [PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)]]) 
-	elif label is 3:
-		temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
-				 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)],
-				 [PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-				 [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)]]) 
-	elif label is 5:
-		temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
-				 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0)],
-				 [PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-				 [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)]]) 
-	
-	return temp
+    temp = PKMatrix([])
+    _logger = logging.getLogger("Dirac")
+    if label not in [0, 1, 2, 3, 4, 5]:
+        _logger.error("Invalid option for 'Dirac', state 0,1,2,3,4,5")
+        raise ValueError
+    elif label is 0:
+        temp = PKMatrix([[PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+                         [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+                         [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0)], 
+                         [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)]]) 
+    elif label is 1:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0)],
+                         [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
+                         [PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+                         [PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)]]) 
+    elif label is 2:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)],
+                 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)], 
+                 [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+                 [PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)]]) 
+    elif label is 3:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
+                 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)],
+                 [PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+                 [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)]]) 
+    elif label is 5:
+        temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
+                 [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0)],
+                 [PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+                 [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)]]) 
+    
+    return temp
 
 ## DEFINE SPINORS
 
 class Spinor:
-	def __init__(self, type_, lorentz_vec, mass):
+    def __init__(self, type_, lorentz_vec, mass):
             
-	    self._v_up = PKMatrix([[PKComplexVar(1,0)],
+        self._v_up = PKMatrix([[PKComplexVar(1,0)],
                                    [PKComplexVar(0,0)], 
                                    [PKComplexVar(lorentz_vec.X[3].value/(lorentz_vec.X[0].value+mass),0)],
 
-    		                   [PKComplexVar(lorentz_vec.X[1].value/(lorentz_vec.X[0].value+mass),lorentz_vec.X[2].value/(lorentz_vec.X[0].value+mass))]])
+                               [PKComplexVar(lorentz_vec.X[1].value/(lorentz_vec.X[0].value+mass),lorentz_vec.X[2].value/(lorentz_vec.X[0].value+mass))]])
 
 
         self._type = None
@@ -131,12 +127,12 @@ def GellMan(label=1):
 
 ## DEFINE DIRAC EQUATION MATRICES
 def alpha(int_):
-        _logger = logging.getLogger("Dirac:alpha")
-	try:
-		return Dirac(int_)
-	except:
-		_logger.error("Invalid Integer")
-                exit(1)
+    _logger = logging.getLogger("Dirac:alpha")
+    try:
+        return Dirac(int_)
+    except ValueError as e:
+        _logger.error("Invalid Integer")
+        raise e
 
 def beta():
     return Dirac(0)
