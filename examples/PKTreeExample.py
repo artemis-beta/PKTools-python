@@ -2,8 +2,7 @@ import sys
 
 sys.path.insert(0, '../source/')
 
-import pktools.PKTree as PKT
-import pktools.PKPlot as PKP
+import pktools as PKT
 
 import numpy as np
 
@@ -15,7 +14,7 @@ x.addBranch("K_DERP", m, "Od")
 print(x)
 print(x.getEntry(67))
 
-hist = PKP.PKHist(x.getBranchData("K_MM"))
+hist = PKT.PKHist(x.getBranchData("K_MM"))
 hist.setXLabel("x")
 hist.setYLabel("y")
 hist.setNBins(100)

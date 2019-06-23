@@ -1,10 +1,10 @@
 import pktools.PKPlot as PKP
 
-class PKLeaf:
+class PKLeaf(object):
     def __init__(self, val):
         self._value = val
 
-class PKBranch:
+class PKBranch(object):
     def __init__(self, name, data=None, units=""):
         self._name = name
         self._data = data
@@ -28,7 +28,7 @@ class PKBranch:
         '''.format(self._name, self._units)
         return out_str
 
-class PKEvent:
+class PKEvent(object):
     def __init__(self, tree_, i):
             self._id = i
             self._parenttree = tree_
@@ -51,7 +51,7 @@ class PKEvent:
         '''
         return out_str
 
-class PKTree:
+class PKTree(object):
     def __init__(self, name="PKTree", branches=None):
         self._name = name
         if branches:
@@ -72,7 +72,7 @@ class PKTree:
         return self.getBranch(branch_name).getData()
 
     def getN(self):
-        return len(self._branches[self._branches.keys()[0]]._data)
+        return len(self._branches[list(self._branches.keys())[0]]._data)
 
     def getEntry(self, i):
         return PKEvent(self, i)
