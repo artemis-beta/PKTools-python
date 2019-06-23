@@ -99,3 +99,6 @@ class PKComplexVar:
 		temp.real = modulus/pow(1+atan(arg_temp),0.5)
 		temp.imaginary = modulus*atan(arg_temp)/pow(1+pow(atan(arg_temp),2),0.5)
 		return temp
+
+        def __truediv__(self, param):
+            return self.__div__(param) #Python3
