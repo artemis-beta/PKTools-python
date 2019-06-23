@@ -77,6 +77,9 @@ class PKVar:
         temp.value = self.value / param.value
         temp.error = pow(pow(self.error/param.value,2)+pow(self.value*param.error,2)*pow(param.value,-4),0.5)
         return temp
+
+    def __rdiv__(self, param):
+        return self.__div__(param, self)
     
     def __str__(self):
         return "%3f +/- %3f" % (self.value,self.error)
