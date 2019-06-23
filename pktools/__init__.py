@@ -7,3 +7,4 @@ from pktools.PKLorentzVector import *
 from pktools.PKTriangle import *
 from pktools.PKConstMatrix import *
 from pktools.PKVar import *
+from pktools.PKPlot import *

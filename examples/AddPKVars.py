@@ -3,19 +3,20 @@ from pktools import PKVar
 x = PKVar(100.,10.)
 y = PKVar(56.,0.34)
 
-print "Vector 1:",
-x.Print()
-print "Vector 2:",
-y.Print()
+print("Vector 1:")
+print(x)
+
+print("Vector 2:")
+print(y)
 z = x+y
-print "\nAddition: ",
-z.Print()
+print("\nAddition: ")
+print(z)
 z = x-y
-print "\nSubtraction: ",
-z.Print()
+print("\nSubtraction: ")
+print(z)
 z = x*y
-print "\nMultiplication: ",
-z.Print()
+print("\nMultiplication: ")
+print(z)
 z = x/y
-print "\nDivision: ",
-z.Print()
+print("\nDivision: ")
+print(z)
