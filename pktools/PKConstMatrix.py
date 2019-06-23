@@ -57,16 +57,14 @@ def Dirac(label=-1):
 
 class Spinor:
     def __init__(self, type_, lorentz_vec, mass):
-            
         self._v_up = PKMatrix([[PKComplexVar(1,0)],
-                                   [PKComplexVar(0,0)], 
-                                   [PKComplexVar(lorentz_vec.X[3].value/(lorentz_vec.X[0].value+mass),0)],
-
-                               [PKComplexVar(lorentz_vec.X[1].value/(lorentz_vec.X[0].value+mass),lorentz_vec.X[2].value/(lorentz_vec.X[0].value+mass))]])
-
-
+                               [PKComplexVar(0,0)], 
+                               [PKComplexVar(lorentz_vec.X[3].value/(lorentz_vec.X[0].value+mass),0)],
+    	                       [PKComplexVar(lorentz_vec.X[1].value/(lorentz_vec.X[0].value+mass),lorentz_vec.X[2].value/(lorentz_vec.X[0].value+mass))]])
+    
+    
         self._type = None
-        
+    
         if type_ == 'v1':
             self._type = self._v_up
             self.elements = self._type.elements
@@ -113,14 +111,16 @@ def GellMan(label=1):
         temp = PKMatrix([[PKComplexVar(0,0), PKComplexVar(0,0),  PKComplexVar(0,0)],
                         [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(1,0)],
                         [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)]])
+
     elif label is 7:
         temp = PKMatrix([[PKComplexVar(0,0),  PKComplexVar(0,0), PKComplexVar(0,0)],
                         [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,-1)], 
                         [PKComplexVar(0,0), PKComplexVar(0,1), PKComplexVar(0,0)]])
+
     elif label is 8:
         temp = PKComplexVar(pow(3, -0.5), 0)*PKMatrix([[PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-                        [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
-                        [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-2,0)]])
+                                                       [PKComplexVar(0,0), PKComplexVar(1,0), PKComplexVar(0,0)],
+                                                       [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-2,0)]])
 
     return temp
 
@@ -139,7 +139,7 @@ def beta():
 
 def g():
     temp = PKMatrix([[PKComplexVar(1,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-                         [PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
-                         [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0)],
-                         [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)]])
+                     [PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0), PKComplexVar(0,0)],
+                     [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0), PKComplexVar(0,0)],
+                     [PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(0,0), PKComplexVar(-1,0)]])
     return temp        

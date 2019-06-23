@@ -1,6 +1,6 @@
 from math import *
 
-class PKVar:
+class PKVar(object):
 
     def __init__(self,val,error):
         self.value = val
@@ -67,7 +67,7 @@ class PKVar:
         return self.__mul__(param)
 
 
-    def __div__(self,param):
+    def __truediv__(self,param):
         
         temp = PKVar(0,0)
         if isinstance(param,int) or isinstance(param,float):
@@ -77,6 +77,12 @@ class PKVar:
         temp.value = self.value / param.value
         temp.error = pow(pow(self.error/param.value,2)+pow(self.value*param.error,2)*pow(param.value,-4),0.5)
         return temp
+
+    def __div__(self, param):
+        return self.__truediv__(param) # Python2
+
+    def __rdiv__(self, param):
+        return self.__div__(param, self)
     
     def __str__(self):
         return "%3f +/- %3f" % (self.value,self.error)
